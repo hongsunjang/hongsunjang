@@ -16,7 +16,7 @@ description: Markdown summary with different options
 
 # Model 비교
 
-![Screenshot from 2022-02-17 16-04-19.png](https://github.com/hongsunjang/hongsunjang.github.io/tree/master/_posts/2021-02-17/Screenshot_from_2022-02-17_16-04-19.png)
+![Screenshot from 2022-02-17 16-04-19.png](assets/images/2021-02-17/Screenshot_from_2022-02-17_16-04-19.png)
 
 - GPT **Generative Pre-trained Transformer**
     - Transformer base의 최초 논문
@@ -53,7 +53,7 @@ description: Markdown summary with different options
         
         - 이해를 위한 이미지
             
-            ![Screenshot from 2022-02-17 16-23-27.png](https://github.com/hongsunjang/hongsunjang.github.io/tree/master/_posts/2021-02-17/Screenshot_from_2022-02-17_16-23-27.png)
+            ![Screenshot from 2022-02-17 16-23-27.png](assets/images/2021-02-17/Screenshot_from_2022-02-17_16-23-27.png)
             
         
         [MASK] 토큰을 작은 Generator로 생성하고 Discriminator로 가짜 토큰인지 아닌지 판별하는 방식으로 학습한다.
@@ -61,9 +61,9 @@ description: Markdown summary with different options
         효과 ? BERT는 [MASK] 토큰에 대해서만 학습하지만 ELECTRA는 모든 토큰에 대해서 학습할 수 있어 효율적인 학습이 된다.
         
 
-![Screenshot from 2022-02-17 16-30-44.png](https://github.com/hongsunjang/hongsunjang.github.io/tree/master/_posts/2021-02-17/Screenshot_from_2022-02-17_16-30-44.png)
+![Screenshot from 2022-02-17 16-30-44.png](assets/images/2021-02-17/Screenshot_from_2022-02-17_16-30-44.png)
 
-![Screenshot from 2022-02-17 16-31-08.png](https://github.com/hongsunjang/hongsunjang.github.io/tree/master/_posts/2021-02-17/Screenshot_from_2022-02-17_16-31-08.png)
+![Screenshot from 2022-02-17 16-31-08.png](assets/images/2021-02-17/Screenshot_from_2022-02-17_16-31-08.png)
 
 - Pretrained Model의 목표
     1. Model downsizing: 모델의 크기가 너무 커서 메모리에 들어가지 못한다.
