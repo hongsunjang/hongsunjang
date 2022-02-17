@@ -54,7 +54,6 @@ description: Markdown summary with different options
         - 이해를 위한 이미지
             
             ![Screenshot from 2022-02-17 16-23-27.png](/assets/images/2021-02-17/Screenshot_from_2022-02-17_16-23-27.png)
->>>>>>> e91a48608f308ce92cc1d0c1b6f0eb99087812f6
             
         
         [MASK] 토큰을 작은 Generator로 생성하고 Discriminator로 가짜 토큰인지 아닌지 판별하는 방식으로 학습한다.
