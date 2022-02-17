@@ -1,5 +1,5 @@
 ---
-title: "My first post"
+title: "최신 NLP 모델 비교(GPT, BERT, RoBERTa, ELECTRA)"
 layout: post
 date: 2021-02-17 22:44
 image: /assets/images/markdown.jpg
