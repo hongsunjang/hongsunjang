@@ -1,3 +1,19 @@
+---
+title: "My first post"
+layout: post
+date: 2016-02-24 22:44
+image: /assets/images/markdown.jpg
+headerImage: false
+tag:
+- markdown
+- elements
+star: true
+category: blog
+author: hongsun Jang
+description: Markdown summary with different options
+---
+
+
 # Model 비교
 
 ![Screenshot from 2022-02-17 16-04-19.png](Model%20%E1%84%87%E1%85%B5%E1%84%80%E1%85%AD%2051c77/Screenshot_from_2022-02-17_16-04-19.png)
