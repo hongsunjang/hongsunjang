@@ -48,6 +48,81 @@ ubuntu-drivers devices
 설치 후 재부팅이 꼭 필요하다.
 
 
+# CUDA 설치
+https://developer.nvidia.com/cuda-toolkit-archive
+에서 다운로드 받을 수 있다.
+
+runfile로 설치하는 것을 권장한다. 주의할 점은 이미 nvidia driver는 설치했기 때문에, 다른 설치 옵션들은 체크 해제하고 cudatoolkit만 다운로드 받아야한다. 
+
+```
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+```
+까지 <code>.bashrc</code> 나 <code>.profile</code> 에 원하는 방법으로 추가하면 완료.
+
+보통 nvidia-smi에서 출력되는 드라이버에서 지원하는 가장 최신의 CUDA를 설치하면 conda 환경에서 하위 cudatoolkit들은 모두 지원이 되지만
+분산 딥러닝 환경에서는 보통 설치할 pytorch 버전에 맞게 설치하는게 좋다.
+왜냐하면 global cuda와 conda 환경으로 설치한 cudatoolkit이 버전이 일치하지 않으면 오류가 발생하는 경우가 많기 때문이다 (e.g. NVIDA/APEX)
+
+따라서 에러가 발생하지 않고, 가장 자주 사용하는 환경은 다음과 같다.
+CUDA Toolkit 11.6 Update 2
+```
+conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.6 -c pytorch -c conda-forge
+```
+
+분산 딥러닝은 매우 불안정하기 때문에, 상위 pytorch 환경이 필요한 경우는 거의 없을 것이다...
+
+```
+nvcc --version
+```
+위 명령어로 cuda가 잘 설치되었는지 확인할 수 있다.
+
+
+# CUDNN 설치
+https://developer.nvidia.com/rdp/cudnn-download#a-collapse765-90 
+에서 NVIDIA 회원가입 후 다운로드 받을 수 있다. 
+Tar 파일을 다운로드 받은 후 
+```
+cd cuda
+cp include/cudnn* /usr/local/cuda/include/
+cp lib/libcudnn* /usr/local/cuda/lib64/
+chmod a+r /usr/local/cuda/lib64/libcudnn* 
+```
+위 명령어로 설치할 수 있다.
+
+
+```
+cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2 
+```
+위 명령어로 cudnn이 잘 설치 되었는지 확인할 수 있다.  
+
+
+
+
+
+
+# NVIDIA APEX 설치
+
+https://github.com/NVIDIA/apex
+에서 설치 방법을 참조하자.
+
+APEX 설치하기 전에 꼭 필요한 패키지가 조금 있다.
+```
+conda install -c conda-forge packaging
+```
+<code>conda-forge</code>의 경우 conda 패키지 관리자의 공식 채널 중 하나이다. 커뮤니티를 기반으로한 오픈소스이므로 엄격한 품질관리가 지원된다. <code>conda</code> 명령어의 default channel은 <code>defaults</code> 로 Anaconda, Inc 에서 제공한다. 따라서 필요하다면 conda-forge를 기본 channel로 설치해도 무방하다.
+
+```
+git clone https://github.com/NVIDIA/apex
+cd apex
+# if pip >= 23.1 (ref: https://pip.pypa.io/en/stable/news/#v23-1) which supports multiple `--config-settings` with the same key... 
+pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./
+```
+
+
+
+
+
 
 <!-- 
 # Model 
