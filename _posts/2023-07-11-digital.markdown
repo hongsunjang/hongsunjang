@@ -1,0 +1,170 @@
+---
+title: "디논실 정리"
+layout: post
+date: 2023-07-11 22:44
+image: /assets/images/markdown.jpg
+headerImage: false
+tag:
+- markdown
+- elements
+star: true
+category: blog
+author: hongsun Jang
+description: Markdown summary with different options
+---
+
+# 실습 환경
+Vivado
+
+FPGA 보드: Arty A7-100T라는 제품을 사용한다.
+35T와는 DPS 슬라이스 개수, 슬라이스 개수가 더 많다.
+
+DSP slice=a digital signal processing logic element included on certain FPGA device familie
+
+# Verilog 기초
+## 자료형
+wire: wire 또는 always 구문 밖에서 값이 조작되는 변수
+
+reg: register always 구문 내에서 값이 조작되는 변수는 반드시 reg형
+
+## always @(조건), begin, end
+1. always @*: always 구문 내 입력 변수 변화가 있으면 언제나 실행
+2. always @ (posedge CLK) : CLK 신호가 positive edge 일 때 실행
+3. always @ (posedge CLK or negedge RESETn): CLK 신호가 postiive edge 일때 또는 RESETn 신호가 negative edge 일때
+combinational logic 과 sequential logic의 차이는
+출려값이 입력값에만 영향을 받는 회로가 comb. logic이고, sequential logic은 출력값이 입력값과 이전 입력들의 영향을 받는 회로이다. 
+
+할당연산자로는
+1. combinational logic 은 '='
+2. seqeuntial lgoic 은 '<='
+
+숫자 표현은
+4'b1111  => bit수'진수, 수 로 표현한다.
+
+잉여 조건
+정의되지 않은 조건이 존재하는 경우 Latch 가 발생한다.
+Latch란 저레벨의 직렬화 메커니즘이다. 메로리 기능을 가지고 있는 회로로 입력상태를 저장하고 저장한 상태를 유지한다. 
+
+
+## Triger 종류
+![trigger](../assets/images/2023-07-11/trigger.png)
+
+
+## Test bench 작성방법
+
+input, output을 비슷하게 선언해주고
+모듈처럼 사용해서 입력을 넣어주면된다.
+밑에는 initial, begin, end를 활용해 입력값을 넣어주면 된다.
+이때 #은 ns만큼 wait한다.
+
+
+실험 결과
+![lab1](../assets/images/2023-07-11/lab1.png)
+
+# Lab2 : Register File 
+
+Read operation의 경우 Addr_A, Addr_B를 읽어 Src, Dest에 출력하는 operation, CLK의 영향을 받지 않는 cominational logic
+
+Write operation의 경우 Addr_B위치에 Data_in(ALU의 계산 결과)를 write한다.
+조건은 CLK: rising edge, WR: positive 일때, CLK의 영향을 받는 sequential logic
+
+
+```
+
+module register(
+    CLK, RSTn, ADDR_A, ADDR_B, DATA_IN, WR, SRC, DEST
+    );
+    output reg [15:0] SRC, DEST;
+
+    input [3:0] ADDR_A, ADDR_B;
+   input [15:0] DATA_IN;
+    input WR, CLK, RSTn;
+    
+   reg [15:0] array [7:0];
+   
+always@*
+begin
+   SRC = array[ADDR_A];
+   DEST = array[ADDR_B];
+end
+
+always@(posedge CLK or negedge RSTn)
+begin
+    if(!RSTn) begin
+        array[0] <= 16'h0000;
+        array[1] <= 16'h0000;
+        array[2] <= 16'h0000;
+        array[3] <= 16'h0000;
+        array[4] <= 16'h0000;
+        array[5] <= 16'h0000;
+        array[6] <= 16'h0000;
+        array[7] <= 16'h0000;
+    end
+    else begin
+        array[ADDR_B] <= DATA_IN; 
+    end
+end   
+endmodule
+
+```
+
+![lab2](../assets/images/2023-07-11/lab2.png)
+
+
+<!-- 
+# Model 
+
+![Screenshot from 2022-02-17 16-04-19.png](/assets/images/2021-02-17/Screenshot_from_2022-02-17_16-04-19.png)
+
+- GPT **Generative Pre-trained Transformer**
+    - Transformer base의 최초 논문
+    - 이전 단어를 바탕으로 다음 단어를 예측하는 방법으로 훈련된다.
+    - 문맥파악에 약점이 있다.
+    
+- BERT ****Bidirectional Encoder Representations from Transformers****
+    
+    : Nest Sentence prediction을 바탕으로 자연스럽게 문맥을 파악할 수 있다.
+    
+    - Masked 된 단어를 예측하는 양방향 (문맥) 바탕 예측으로 훈련된다.
+    - NSP를 도입하여 문장간의 관계도 학습할 수 있다.
+
+- Bert 기반 모델
+    - RoBERTa(19년) - FaceBook ****A Robustly Optimized BERT Pretraining Approach****
+        
+        → 단방향 학습인 GPT가 Parameter 수와 학습데이터를 늘리자 좋은 성능? 왜?
+        
+        1. Bert의 고정된 Mask로 반복 학습 → Dynamic Masking 도입
+        2. 두 문장간의 예측이 의미가 있을까? → NSP 제거
+        3. 학습데이터 16G → 학습데이터 160G
+        
+    - ****ALBERT(19년) A L****ittle **BERT** for Self-supervised Learning of Language Representations
+        
+        NSP → SOP(Sentence order prediction)으로 학습
+        
+        Transformer 구조 개선 → 모델사이즈 감소
+        
+    - ELECTRA(20년)
+        
+        ****Pre-training Text Encoders as Discriminators Rather Than Generators****
+        
+        MLM(Masked Language Model)을 개선시킨 RTD(Replaced Token Detection)
+        
+        - 이해를 위한 이미지
+            
+            ![Screenshot from 2022-02-17 16-23-27.png](/assets/images/2021-02-17/Screenshot_from_2022-02-17_16-23-27.png)
+            
+        
+        [MASK] 토큰을 작은 Generator로 생성하고 Discriminator로 가짜 토큰인지 아닌지 판별하는 방식으로 학습한다.
+        
+        효과 ? BERT는 [MASK] 토큰에 대해서만 학습하지만 ELECTRA는 모든 토큰에 대해서 학습할 수 있어 효율적인 학습이 된다.
+        
+
+![Screenshot from 2022-02-17 16-30-44.png](/assets/images/2021-02-17/Screenshot_from_2022-02-17_16-30-44.png)
+
+![Screenshot from 2022-02-17 16-31-08.png](/assets/images/2021-02-17/Screenshot_from_2022-02-17_16-31-08.png)
+
+- Pretrained Model의 목표
+    1. Model downsizing: 모델의 크기가 너무 커서 메모리에 들어가지 못한다.
+    2. Train Resource downsizing: 학습이 오래걸린다.
+    3. Memory degradation: 모델에 따라 일정 수준이상 복잡해지면 모델 성능이 떨어진다
+-->
