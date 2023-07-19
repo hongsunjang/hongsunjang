@@ -24,6 +24,19 @@ bifurcation 의 의미는 "the division of something into two branches or parts"
 
 MMIOBase는 MMIO region의 base address를 의미한다. 이것은 보통 datasheet나 documentation에 명시되어 있다. 
 
+# PCIe는 4가 요소 이루어진다
+RAM에 Mapping 되어있다는 것은 allocated into RAM을 의미하지 않는다. 
+actual data가 저장된 곳은 PCI device이다. 
+만약 device가 1MB의 memory-mapped space를 요청했다면, BIOS는 address 0x1000/0000 to 0x1010/0000을 할당해준다. 
+이건 physical RAM 용량을 계속 차지하고 있을 것이라는 의미가 아니다. 
+만약 이 주소 space에 데이터를 write하게 되면 이는 PCI device에 해당하는 memory space로 자동으로 전달되는 것이다. 
+
+
+1. configuration space: 4KB  정도의 address space로 system memory를 차지하지만, 이는 실제 device의 register에 저장되어 있다. 여기에는 vender ID, device ID등 다양한 device에 대한 정보도 얻을 수 있다.
+
+# What is BAR (base address register )
+Memory-mapeed
+
 
 <!-- 
 # Model 
