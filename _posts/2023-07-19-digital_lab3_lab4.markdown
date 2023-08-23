@@ -239,6 +239,8 @@ endmodule
 
 # Lab 4 실습 : Traffic Light Controller 설계
 
+### issue
+1. 굉장히 불친절
 
 ### Code
 
@@ -282,3 +284,27 @@ endmodule
 ///////////////////////////////////////////////////////////
 
 ```
+
+```
+
+```
+
+
+## 미팅 결과
+
+=> FSM 주차 맞추기
+=> Lab1/Lab2 합치기
+Test bench 1개 통과
+
+PPT랑 변수이름 mapping
+
+shift가 op코드가 아니다.
+
+RISC processor: 사진 최신으로 바꾸기
+
+Lab3, Lab4 순서 고려해보기 ( pyQt? )
+
+코드에 맞춰서 HGREEN ->. 
+
+
+

@@ -1,0 +1,117 @@
+---
+title: "디논실 수업자료 1,2 주차  정리"
+layout: post
+date: 2023-08-23 22:44
+image: /assets/images/markdown.jpg
+headerImage: false
+tag:
+- markdown
+- elements
+star: true
+category: blog
+author: hongsun Jang
+description: Markdown summary with different options
+---
+
+DSD 전동석 교수님의 자료와 
+Advanced FPGA Design Architecture, Implementation, and Optimization (Steve Kilts) 님의 자료를 참고했다.
+
+# Intro
+
+- Hardware abstraction
+
+software -> behaviroal model -> sturctual model -> circuits
+
+- Harware description language (HDL)
+
+- Essential hardware componetnts
+
+Arithemetic block, sequential logic
+
+- Computer artithmetic algorithms
+
+Number representations, fast computation algorithms
+
+> Circuit -> logic gate -> harware block -> SoC
+> 이 흐름을 통해 이어지는 걸 배울 것이다.             
+
+- Basic logic gates 들은 알아둘 필요가 있다. 
+![baisc](../assets/images/2023_08_23/basic_gates.png)
+
+
+# Standard Representation
+
+literal: product or sum term에 존재하는 variable의 개수
+
+x*y' 는 2-literal product term
+x + y' + z 는 3-literal sum term
+x' + x'*y' + x'*y*z 는 sum-of-products experssion with 3 product terms
+x'* ( x+ y' ) * (x'+y+z)는 product of sums experssion
+
+normal term은 variable이 한번씩 등장하는 것을 말한다.
+(e.g. w*x*y')
+
+Minterm은 변수가 한번씩 등장하면서 product로 묶여있는 것을 말한다.
+2-literal x, y 에 대해 4가지 minterm (= standard product)가 존재한다.
+- x*y, x'*y, x*y', x'*y'
+
+Maxterm은 변수가 한번씩 등장하면서 sum으로 묶여있는 것을 말한다.
+2-literal x, y에 대해 4가지 maxterm(=standard sum)이 존재한다. 
+- x+y, x'+y, x+y', x'+y'
+
+왜 minterm, maxterm을 사용해야하나? 회로를 간략하게 표현할 수 있다. 
+그리고 모든 expression은 minterm, maxterm을 활용하여 표현될 수 있다. 
+
+![term](../assets/images/2023_08_23/term.png)
+$\sum$ m(1,4,6) = m1 + m4 + m6
+$\prod$ M(0,1,3,5) = M0*M1*M3*M5
+
+만약 bc'을 표현하고 싶다면 m2 = a'bc', m6 = abc'를 활용하여 bc' = m2 + m6으로 표현가능하다.
+
+# Sequential Circuit
+
+이는 현재 입력뿐만아니라 이전의 입력에의해 영향을 받는 circuit을 의미한다.
+
+Synchronous Sequential circuit의 경우 clock signal에 의해 내부 state가 변경된다. 
+
+
+
+Asynchronous Sequential circuit의 경우 입력신호를 언제든지 반영하며 cominational logic만으로 구성되지만, unstable하기 때문에 특별한 경우에만 사용된다.
+
+Synchronous Seqeuntial circuit의 경우 clock signal에 의해 discrete하게 state가 변경되므로,
+FSM이라고 할 수 있다. N개의 binary state variable이 있으면 $2^N$ 개의 states가 가능하다.
+
+Sequential circuit의 state를 저장하기 위해선 storage element가 필요하다
+
+# Storage Elements
+
+1. Latch: stoarge elements that operate with signal levels
+
+2. Flip-flop : those controlled by a clock transition
+
+# Latch의 종류
+
+1. SR (Set-Reset) Latch
+
+Set 신호가 1, Reset 신호가 0인 후에 Q = 1, Q' = 0 인 상태를 유지한다. 
+Set 신호가 0, Reset 신호가 1인 경우 Q = 0 , Q' = 1 인 상태를 유지한다.
+특징적으로 Set 신호가 1, Reset 신호가 1인 경우 undesired case가 있다.
+
+![SR_latch](../assets/images/2023_08_23/sr_latch.png)
+
+
+2. D latch : undesirable state가 없는 latch
+
+En 신호가 0이면 State가 변하지 않고
+En 신호가 1일때, D가 0이면 Q가 0
+En 신호가 1일때, D가 1이면 Q가 1
+
+![d_latch](../assets/images/2023_08_23/d_latch.png)
+
+# Flip-Flop의 종류
+
+1. Edge-Triggered D Flip-Flop
+
+D latch 두 개를 사용하여 구성한다.
+
+![d_flip_flop](../assets/images/2023_08_23/d_flip_flop.png)
