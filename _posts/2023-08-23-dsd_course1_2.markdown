@@ -115,3 +115,4 @@ En 신호가 1일때, D가 1이면 Q가 1
 D latch 두 개를 사용하여 구성한다.
 
 ![d_flip_flop](../assets/images/2023_08_23/d_flip_flop.png)
+
