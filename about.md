@@ -28,15 +28,27 @@ I'm currently interested in developing optimzied distributed system for deep lea
 
 <ul>
 	<li>
-	Optimus-CC: Efficient Large NLP Model Training with 3D Parallelism Aware Communication Compression (ASPLOS'23)
-	<a href="https://dl.acm.org/doi/10.1145/3575693.3575712">[Paper]</a>
+	Pipette: Automatic Fine-Grained Large Language Model Training Configurator for Real-World Clusters (DATE'24), to appear
 	</li>
+
+	<li>
+	Smart-Infinity: Fast Large Language Model Training using Near-Storage Processing on a Real System (HPCA'24), to appear
+	</li>
+	
+	<li>
+	Fast Adversarial Training with Dynamic Batch-level Attack Control (DAC'23)
+	<a href="https://ieeexplore.ieee.org/abstract/document/10247930">[Paper]</a>
+	</li>
+
 	<li> 
 	Pipe-BD: Pipelined Parallel Blockwise Distillation (DATE'23)
 	<a href="https://ieeexplore.ieee.org/abstract/document/10137044">[Paper]</a>
 	<a href="https://github.com/hongsunjang/Pipe-BD">[Github]</a>
 	</li>
+
 	<li>
-	Fast Adversarial Training with Dynamic Batch-level Attack Control (DAC'23), to appear
+	Optimus-CC: Efficient Large NLP Model Training with 3D Parallelism Aware Communication Compression (ASPLOS'23)
+	<a href="https://dl.acm.org/doi/10.1145/3575693.3575712">[Paper]</a>
 	</li>
+	
 </ul>

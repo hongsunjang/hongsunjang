@@ -7,8 +7,7 @@ headerImage: false
 tag:
 - markdown
 - elements
-category: fpga
-fpga: true
+category: blog
 author: hongsun Jang
 description: Markdown summary with different options
 ---
