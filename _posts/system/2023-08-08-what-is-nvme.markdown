@@ -8,7 +8,7 @@ tag:
 - markdown
 - elements
 star: true
-category: blog
+category: system
 author: hongsun Jang
 description: Markdown summary with different options
 ---
