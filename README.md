@@ -1,34 +1,23 @@
 <p align="center">
-    <h2 align="center">Indigo Minimalist Jekyll Template - <a href="https://sergiokopplin.github.io/indigo/">Demo</a></h2>
+    <h2 align="center"> Hongsun's Blog - fork from <a href="https://sergiokopplin.github.io/indigo/">Demo</a></h2>
 </p>
 
-<p align="center">This is a simple and minimalist template for Jekyll for those who likes to eat noodles.</p>
+<p align="center"> Hello, I'm hongsun who likes to eat noodels. </p>
 
 ***
+## 맨날 까먹어서 적는 정리
 
-<p align="center">
-    <b><a href="README.md#what-has-inside">What has inside</a></b>
-    |
-    <b><a href="README.md#setup">Setup</a></b>
-    |
-    <b><a href="README.md#settings">Settings</a></b>
-    |
-    <b><a href="README.md#how-to">How to</a></b>
-</p>
+- _config.yml 파일을 수정하면 된다.
 
-<p align="center">
-    Light and Dark themes.
-</p>
+- 실행은 
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/sergiokopplin/indigo/gh-pages/assets/screen-shot.png" />
-</p>
+```
+bundle exec jekyll serve
+```
 
-## What has inside
+- 목차를 추가하고 싶으면 nav.html을 수정하고 root 폴더에 html 파일을 추가해야함.
 
-- [Jekyll](https://jekyllrb.com/), [Sass](https://sass-lang.com/) ~[RSCSS](https://rscss.io/)~ and [SVG](https://www.w3.org/Graphics/SVG/);
-- Google Speed: [98/100](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fsergiokopplin.github.io%2Findigo%2F);
-- No JS. :sunglasses:
+- 
 
 ## Setup
 
@@ -59,7 +48,14 @@ picture: 'assets/images/profile.jpg'
 and lot of other options, like width, projects, pages, read-time, tags, related posts, animations, multiple-authors, etc.
 ```
 
-## How To?
+
+## What has inside
+
+- [Jekyll](https://jekyllrb.com/), [Sass](https://sass-lang.com/) ~[RSCSS](https://rscss.io/)~ and [SVG](https://www.w3.org/Graphics/SVG/);
+- Google Speed: [98/100](https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fsergiokopplin.github.io%2Findigo%2F);
+- No JS. :sunglasses:
+
+## FAQ
 
 Check the [FAQ](./FAQ.md) if you have any doubt or problem.
 

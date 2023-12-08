@@ -7,24 +7,30 @@
         {% endif %}
 
         {% if site.blog == true %}
-            {% if page.title != "Blog" %}
+            {% if page.title != "blog" %}
                 <li class="item">
                     <a class="link" href="{{ site.url }}/blog">Blog</a>
                 </li>
             {% endif %}
         {% endif %}
         {% if site.blog == true %}
-            {% if page.title != "FPGA" %}
+            {% if page.title != "ai" %}
                 <li class="item">
-                    <a class="link" href="{{ site.url }}/fpga">FPGA</a>
+                    <a class="link" href="{{ site.url }}/ai">AI</a>
                 </li>
             {% endif %}
         {% endif %}
-
-        {% if site.projects == true %}
-            {% if page.title != "Projects" %}
+        {% if site.blog == true %}
+            {% if page.title != "system" %}
                 <li class="item">
-                    <a class="link" href="{{ site.url }}/projects">Projects</a>
+                    <a class="link" href="{{ site.url }}/system">System</a>
+                </li>
+            {% endif %}
+        {% endif %}
+        {% if site.blog == true %}
+            {% if page.title != "arch" %}
+                <li class="item">
+                    <a class="link" href="{{ site.url }}/arch">Arch.</a>
                 </li>
             {% endif %}
         {% endif %}
