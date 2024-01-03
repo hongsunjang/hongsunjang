@@ -16,8 +16,7 @@ bundle exec jekyll serve
 ```
 
 - 목차를 추가하고 싶으면 nav.html을 수정하고 root 폴더에 html 파일을 추가해야함.
-
-- 
+목차 추가시 title: blog로 고정  절대 바꾸지 말것
 
 ## Setup
 
