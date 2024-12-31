@@ -7,6 +7,16 @@
 ***
 ## 맨날 까먹어서 적는 정리
 
+- mac에서 설치하는 법
+
+```
+brew install rbenv ruby-build
+rbenv install 3.2.2
+rbenv global 3.2.2
+eval "$(rbenv init -)"
+gem install bundler
+bundle install
+```
 - _config.yml 파일을 수정하면 된다.
 
 - 실행은 

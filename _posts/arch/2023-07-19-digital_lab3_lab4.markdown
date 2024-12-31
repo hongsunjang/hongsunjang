@@ -1,5 +1,5 @@
 ---
-title: "디논실 정리"
+title: "디논실 lab3-4정리"
 layout: post
 date: 2023-07-19 22:44
 image: /assets/images/markdown.jpg
@@ -8,7 +8,7 @@ tag:
 - markdown
 - elements
 star: true
-category: blog
+category: arch
 author: hongsun Jang
 description: Markdown summary with different options
 ---
